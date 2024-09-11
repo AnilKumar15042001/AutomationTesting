@@ -67,16 +67,19 @@ public class RetrieveData {
 		driver.get("https://www.amazon.in/");
 		driver.findElement(By.id("twotabsearchtextbox")).sendKeys(map.get("searchtext"), Keys.ENTER);
 		driver.findElement(By.xpath("(//*[@class='rush-component']/descendant::img)[position()=1]")).click();
-//		Thread.sleep(3000);
+		Thread.sleep(3000);
 		Amazon.windowClose(driver.getTitle());
-		WebElement dropdown = driver.findElement(By.xpath("//select[@id='quantity']"));
-		if (dropdown.isDisplayed()) {
-			Select select = new Select(dropdown);
-			select.selectByVisibleText(map.get("count"));
-//			Thread.sleep(3000);
-			driver.findElement(By.id("add-to-cart-button")).click();
-		} else {
-//			Thread.sleep(3000);
+		try
+		{
+			WebElement dropdown = driver.findElement(By.xpath("//select[@id='quantity']"));
+			if (dropdown.isDisplayed()) {
+				Select select = new Select(dropdown);
+				select.selectByVisibleText(map.get("count"));
+				Thread.sleep(3000);
+				driver.findElement(By.id("add-to-cart-button")).click();
+			}
+		}
+		catch (Exception e) {
 			driver.findElement(By.id("add-to-cart-button")).click();
 		}
 	}

@@ -38,6 +38,7 @@ public class Amazon {
 			int cols = sheet.getRow(r).getLastCellNum();
 			String searchvalue="";
 			String dropdown="";
+			
 			for (int c = 0; c < cols; c++) {
 				XSSFCell cell = sheet.getRow(r).getCell(c);
 				if (c == 1 || c == 2) {
@@ -56,12 +57,13 @@ public class Amazon {
 						{
 							Select select = new Select(quantityDropdown);
 							select.selectByVisibleText(dropdown);
-//							driver.findElement(By.id("add-to-cart-button")).click();
+							driver.findElement(By.id("add-to-cart-button")).click();
 						}
 					}
 					catch(Exception e)
 					{
-//						driver.findElement(By.id("add-to-cart-button")).click();
+//						Thread.sleep(3000);
+						driver.findElement(By.id("add-to-cart-button")).click();
 					}
 					break;
 				}

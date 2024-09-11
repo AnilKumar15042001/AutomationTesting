@@ -56,7 +56,6 @@ public class ClearTrip {
 		driver.findElement(By.xpath("//span[contains(.,'Search flights')]")).click();
 		driver.close();
 	}
-	@Test
 	public static void dropdown(WebDriver driver,By xpath,String value) {
 		List<WebElement> elements=driver.findElements(xpath);
 		for(WebElement element:elements)
@@ -69,7 +68,6 @@ public class ClearTrip {
 			}
 		}
 	}
-	@Test
 	public static void datePickers(WebDriver driver,By currentDateXpath,By rightArrowButton,String listXpath,String... futureDate) throws InterruptedException {
 		wait=new WebDriverWait(driver,10);
 		while(true)
