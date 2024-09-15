@@ -18,7 +18,7 @@ public class Test1 {
 	@Test
 	public void main() throws MalformedURLException, InterruptedException {
 		
-		String url="http://172.16.0.75:4444";
+		String url="http://192.168.28.28:4444";
 		DesiredCapabilities capabilities=new DesiredCapabilities();
 		capabilities.setPlatform(Platform.WINDOWS);
 		capabilities.setBrowserName("chrome");

@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import static utils.PropertiesUtils.properties;
+//import static utils.PropertiesUtils.properties;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,7 @@ public class BrowserUtils {
 
 	public static WebDriver driver;
 	public static void openBrowser() throws Exception {
-		switch (PropertiesUtils.getPropertyValue().getProperty("browser")) {
+		switch (PropertiesUtils.getKeyValue("browser")) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();

@@ -10,16 +10,18 @@ import static utils.ExcelUtils.*;
 import java.io.FileInputStream;
 
 public class DataProviderUtils {
-  @DataProvider(name="excelData")
-  public Object[][] excelDataProvider() throws Exception {
-	  String filepath=PropertiesUtils.getPropertyValue().getProperty("excelFilePath");
-	  String sheetName="sheet2";
-	  return ExcelUtils.getExcelData(filepath, sheetName, 0);
-  }
- 
-  @Test(dataProvider = "excelData")
-  public void printData(String username,String password,String result)
-  {
-	  System.out.println(username+"-->"+password+"-->"+result);
-  }
+
+	public static Object[][] excelDataProvider() throws Exception {
+		String filepath = PropertiesUtils.getKeyValue("excelFilePath");
+		String sheetName = PropertiesUtils.getKeyValue("sheet");
+		return ExcelUtils.getExcelData(filepath, sheetName, 0);
+	}
+
+	public static void printData(String username, String password, String result) throws Exception {
+		System.out.println(excelData());
+	}
+
+	public static String excelData() throws Exception {
+		return excelDataProvider().toString();
+	}
 }

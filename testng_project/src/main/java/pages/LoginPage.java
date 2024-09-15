@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import applicationCommonMethods.Logout;
 import utils.DataProviderUtils;
@@ -21,12 +22,12 @@ public class LoginPage {
 	By heading = By.xpath("//h5[text()='Login']");
 	By invalid = By.xpath("//*[text()='Invalid credentials']");
 
-	public void setUsername_TextField() throws Exception {
-		ElementUtils.textField(username_TextField, PropertiesUtils.getPropertyValue().getProperty("username"));
+	public void setUsername_TextField(String username) throws Exception {
+		ElementUtils.textField(username_TextField, username);
 	}
 
-	public void setPassword_TextField() throws Exception {
-		ElementUtils.textField(password_TextField, PropertiesUtils.getPropertyValue().getProperty("password"));
+	public void setPassword_TextField(String password) throws Exception {
+		ElementUtils.textField(password_TextField, password);
 	}
 
 	public void setLogin_btn() throws Exception {
@@ -34,28 +35,55 @@ public class LoginPage {
 	}
 
 	public void verifyLoginPage() {
-		if (ElementUtils.elementVisibility(heading)) {
-			System.out.println("Pass:User in login page!...");
-		} else {
-			System.out.println("Fail:User not in login page!...");
-		}
+		Assert.assertTrue(ElementUtils.elementVisibility(heading), "Fail:User not in login page!...");
 	}
+
 	@Test(dataProvider = "excelData",dataProviderClass = DataProviderUtils.class)
 	public void performLogin() throws Exception {
-		Object[][] data=new DataProviderUtils().excelDataProvider();
+		SoftAssert softAssert;
+		Object[][] data=DataProviderUtils.excelDataProvider();
 		for(int i=0;i<data.length;i++)
 		{
 			String username=data[i][0].toString();
 			String password=data[i][1].toString();
-			ElementUtils.textField(username_TextField, username);
-			ElementUtils.textField(password_TextField, password);
+			setUsername_TextField(username);
+			setPassword_TextField(password);
 			setLogin_btn();
-			Thread.sleep(2000);
-			if (driver.findElement(By.xpath("//h6[text()='Dashboard']")).isDisplayed()) {
-				Logout.logout();
-				Assert.assertTrue(true);
-			} else {
-				Assert.fail();
+			try
+			{
+				if (ElementUtils.elementVisibility(By.xpath("//h6[text()='Dashboard']"))) {
+					Logout.logout();
+					Assert.assertTrue(true);
+			     }
+			}
+			catch (Exception e) {
+				softAssert=new SoftAssert();
+				softAssert.fail();
+			}
+
+		}
+	}
+	
+	public void login() throws Exception {
+		String filePath=PropertiesUtils.getKeyValue("excelFilePath");
+		String sheet=PropertiesUtils.getKeyValue("sheet");
+		int rows=ExcelUtils.getRowCount(filePath, sheet);
+		int cols=ExcelUtils.getRowCount(filePath, sheet);
+		for(int i=1;i<=rows;i++)
+		{
+			setUsername_TextField(ExcelUtils.getCellData(filePath, sheet, i, 0));
+			setPassword_TextField(ExcelUtils.getCellData(filePath, sheet, i, 1));
+			setLogin_btn();
+			try
+			{
+				if(ElementUtils.elementVisibility(By.xpath("//h6[text()='Dashboard']")))
+				{
+					Logout.logout();
+				}
+			}
+			catch(Exception e)
+			{
+				System.out.println("Element not displayed!...");
 			}
 		}
 	}

@@ -1,5 +1,7 @@
 package testSuites;
 
+import static testSuites.Amazon.driver;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
@@ -19,14 +21,17 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Amazon {
+public class Amazon2 {
 	public static WebDriver driver;
+
 	@Test
-	public void main() throws IOException, InterruptedException {
+	@Parameters({"cellValue"})
+	public void main(String cellValue) throws IOException, InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -34,51 +39,43 @@ public class Amazon {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		FileInputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\TestData\\Amazon.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(stream);
-		XSSFSheet sheet = workbook.getSheet("sheet1");
+		XSSFSheet sheet = workbook.getSheet("sheet3");
 		int rows = sheet.getLastRowNum();
-		for (int r = 1; r <= rows; r++)
-		{
+		for (int r = 1; r <= rows; r++) {
 			int cols = sheet.getRow(r).getLastCellNum();
-			String searchvalue="";
-			String dropdown="";
-			
+			String searchvalue = "";
+			String dropdown = "";
+			String result = "";
 			for (int c = 0; c < cols; c++) {
 				XSSFCell cell = sheet.getRow(r).getCell(c);
-				if (c == 1 || c == 2) {
-					searchvalue = sheet.getRow(r).getCell(1).toString();
-					dropdown = sheet.getRow(r).getCell(2).toString();
-					dropdown = dropdown.replace(dropdown.substring(dropdown.indexOf('.')), "");
-					driver.findElement(By.id("twotabsearchtextbox")).clear();
-					driver.findElement(By.id("twotabsearchtextbox")).sendKeys(searchvalue, Keys.ENTER);
-					driver.findElement(By.xpath("(//*[@class='rush-component']/descendant::img)[position()=1]")).click();
-					windowClose(driver.getTitle());
-//					Thread.sleep(3000);
-					try
-					{
+				searchvalue = sheet.getRow(r).getCell(1).toString();
+				dropdown = sheet.getRow(r).getCell(2).toString();
+				dropdown = dropdown.replace(dropdown.substring(dropdown.indexOf('.')), "");
+				result = sheet.getRow(r).getCell(3).toString();
+				if (result.equals(cellValue)) {
+					try {
+						driver.findElement(By.id("twotabsearchtextbox")).clear();
+						driver.findElement(By.id("twotabsearchtextbox")).sendKeys(searchvalue, Keys.ENTER);
+						driver.findElement(By.xpath("(//*[@class='rush-component']/descendant::img)[position()=1]")).click();
+						windowClose(driver.getTitle());
+						Thread.sleep(2000);
 						WebElement quantityDropdown = driver.findElement(By.xpath("//*[@id='quantity']"));
 						js.executeScript("arguments[0].scrollIntoView(true);", quantityDropdown);
-//						Thread.sleep(3000);
-						if(quantityDropdown.isDisplayed())
-						{
+						Thread.sleep(2000);
+						if (quantityDropdown.isDisplayed()) {
 							Select select = new Select(quantityDropdown);
 							select.selectByVisibleText(dropdown);
 							driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
-							Thread.sleep(3000);
 							driver.navigate().refresh();
-						}
-						else
-						{
+						} else {
 							driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
 							driver.navigate().refresh();
 						}
-					}
-					catch(Exception e)
-					{
+					} catch (Exception e) {
 						Thread.sleep(4000);
 						WebElement addToCart = driver.findElement(By.xpath("//div[@id='a-accordion-auto-9']/descendant::input[@id='add-to-cart-button']"));
 						js.executeScript("arguments[0].scrollIntoView(true);", addToCart);
 						addToCart.click();
-						Thread.sleep(2000);
 						driver.navigate().refresh();
 					}
 					break;
@@ -103,6 +100,7 @@ public class Amazon {
 			}
 		}
 	}
+
 	@AfterClass
 	public void name() {
 		driver.quit();

@@ -6,13 +6,31 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
+import java.util.Set;
 
 public class PropertiesUtils {
 
 	public static Properties properties;
 	public static Properties getPropertyValue() throws Exception {
-		properties=new Properties();
-		properties.load(new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\configuration\\global.properties"));
-		return properties;
+		try
+		{
+			properties=new Properties();
+			properties.load(new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\configuration\\global.properties"));
+			return properties;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return properties;
+		}
 	}
+	
+	public static String getKeyValue(String key) throws Exception {
+		return getPropertyValue().getProperty(key);
+	}
+	
+	public static Set<Object> getKeys() throws Exception {
+		return getPropertyValue().keySet();
+	}
+	
+	
 }
