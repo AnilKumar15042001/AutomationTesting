@@ -1,15 +1,17 @@
 package utils;
 
+import java.time.Duration;
+
+//import static utils.PropertiesUtils.properties;
+
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-//import static utils.PropertiesUtils.properties;
-
-import java.util.concurrent.TimeUnit;
 
 public class BrowserUtils {
 
@@ -34,8 +36,8 @@ public class BrowserUtils {
 		default:System.out.println("Invalid Browser!...");
 			return;
 		}
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		WaitStatementUtils.implicitly_Wait(driver, 10);
+		WindowsUtils.maximizeWindow();
 //		String url="http://192.168.28.30:4444";
 //		DesiredCapabilities capabilities=new DesiredCapabilities();
 //		capabilities.setPlatform(Platform.WINDOWS);

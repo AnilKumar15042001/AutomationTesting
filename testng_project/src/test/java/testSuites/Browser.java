@@ -1,5 +1,8 @@
 package testSuites;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -33,9 +36,9 @@ public class Browser {
 		if (driver.findElement(By.xpath("//h6[text()='Dashboard']")).isDisplayed()) {
 			driver.findElement(By.xpath("//img[@class='oxd-userdropdown-img']/following-sibling::i")).click();
 			driver.findElement(By.linkText("Logout")).click();
-			Assert.assertTrue(true);
+			AssertJUnit.assertTrue(true);
 		} else {
-			Assert.fail();
+			AssertJUnit.fail();
 		}
 	}
 

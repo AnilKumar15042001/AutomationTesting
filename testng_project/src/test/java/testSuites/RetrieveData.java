@@ -1,5 +1,7 @@
 package testSuites;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,20 +12,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.github.dockerjava.api.model.Driver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.ExcelUtils;
+import utils.ITestResultUtils;
 
 import static testSuites.Amazon.driver;
 
@@ -58,6 +59,7 @@ public class RetrieveData {
 	public void getCurrentMethodName(ITestResult result) {
 		methodName = result.getMethod().getMethodName();
 		className = result.getMethod().getTestClass().getRealClass().getSimpleName();
+		ITestResultUtils.getCurrentClassName(result);
 	}
 
 	@AfterMethod

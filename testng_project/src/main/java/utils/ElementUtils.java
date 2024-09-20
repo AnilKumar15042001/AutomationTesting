@@ -1,10 +1,13 @@
 package utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import static utils.BrowserUtils.driver;
 
@@ -15,6 +18,7 @@ public class ElementUtils {
 
 	public static WebElement element;
 	public static Select select;
+	public static Actions actions;
 
 	public static boolean isElementPresent(By by) {
 		try {
@@ -40,12 +44,26 @@ public class ElementUtils {
 
 	// textbox
 	public static void textField(By by, String value) throws Exception {
+		Assert.assertTrue(locateElement(by).isDisplayed() && locateElement(by).isEnabled(),"Element is not displayed and not enabled");
 		locateElement(by).sendKeys(value);
 	}
 
 	// click
 	public static void performClick(By by) throws Exception {
+		Assert.assertTrue(locateElement(by).isDisplayed() && locateElement(by).isEnabled(),"Element is not displayed and not enabled");
 		locateElement(by).click();
+	}
+	
+	public static void performButtonClick(By by) throws Exception {
+		Assert.assertTrue(locateElement(by).isDisplayed() && locateElement(by).isEnabled(),"Button is not displayed and not enabled");
+		if(!locateElement(by).isSelected())
+		{
+			locateElement(by).click();
+		}
+		else
+		{
+			System.out.println("Button is already selected!...");
+		}
 	}
 
 	// visibility
@@ -103,5 +121,23 @@ public class ElementUtils {
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public static void autoSuggestDropDown(By inputBox,By listItem,String...value) throws Exception
+	{
+		textField(inputBox, value[0]);
+		List<WebElement> options=driver.findElements(listItem);
+		for(WebElement option:options)
+		{
+			if(option.getText().equals(value[1]))
+			{
+				option.click();
+				break;
+			}
+		}
+	}
+	
+	public static String elementText(By by) throws Exception {
+		return locateElement(by).getText();
 	}
 }

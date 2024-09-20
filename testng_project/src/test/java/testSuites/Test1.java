@@ -1,5 +1,6 @@
 package testSuites;
 
+import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -18,15 +19,16 @@ public class Test1 {
 	@Test
 	public void main() throws MalformedURLException, InterruptedException {
 		
-		String url="http://192.168.28.28:4444";
+		String url="http://localhost:4444";
 		DesiredCapabilities capabilities=new DesiredCapabilities();
-		capabilities.setPlatform(Platform.WINDOWS);
+		capabilities.setPlatform(Platform.LINUX);
 		capabilities.setBrowserName("chrome");
 		
 		WebDriver driver=new RemoteWebDriver(new URL(url), capabilities);
 		driver.get("https://www.google.com/");
+		driver.manage().window().maximize();
 		System.out.println(driver.getTitle());
-		Thread.sleep(3000);
+		Thread.sleep(60000);
 		driver.quit();
 	}
 

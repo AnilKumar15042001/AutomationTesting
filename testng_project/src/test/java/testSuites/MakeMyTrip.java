@@ -1,5 +1,6 @@
 package testSuites;
 
+import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +27,7 @@ public class MakeMyTrip {
 		driver.manage().window().maximize();
 		driver.navigate().to("https://www.makemytrip.com/");
 		WebElement closePopup=driver.findElement(By.xpath("//span[@class='commonModal__close']"));
-		wait=new WebDriverWait(driver,10);
+		wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(closePopup));
 		closePopup.click();
 		driver.findElement(By.xpath("//input[@id='fromCity']")).click();

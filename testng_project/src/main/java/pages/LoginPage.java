@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import applicationCommonMethods.Logout;
+import utils.AssertUtils;
 import utils.DataProviderUtils;
 import utils.ElementUtils;
 import utils.ExcelUtils;
@@ -20,7 +21,7 @@ public class LoginPage {
 	By password_TextField = By.name("password");
 	By login_btn = By.xpath("//button[@type='submit']");
 	By heading = By.xpath("//h5[text()='Login']");
-	By invalid = By.xpath("//*[text()='Invalid credentials']");
+	By txt_InvalidCredentials = By.xpath("//*[text()='Invalid credentials']");
 
 	public void setUsername_TextField(String username) throws Exception {
 		ElementUtils.textField(username_TextField, username);
@@ -36,6 +37,9 @@ public class LoginPage {
 
 	public void verifyLoginPage() {
 		Assert.assertTrue(ElementUtils.elementVisibility(heading), "Fail:User not in login page!...");
+	}
+	public void verifyErrorMessage() {
+		Assert.assertTrue(ElementUtils.elementVisibility(txt_InvalidCredentials), "Fail:User not see an error message!...");
 	}
 
 	@Test(dataProvider = "excelData",dataProviderClass = DataProviderUtils.class)
@@ -73,19 +77,31 @@ public class LoginPage {
 		{
 			setUsername_TextField(ExcelUtils.getCellData(filePath, sheet, i, 0));
 			setPassword_TextField(ExcelUtils.getCellData(filePath, sheet, i, 1));
+			String expected=ExcelUtils.getCellData(filePath, sheet, i, 2);
+			String actual = "";
 			setLogin_btn();
 			try
 			{
-				if(ElementUtils.elementVisibility(By.xpath("//h6[text()='Dashboard']")))
+				actual=ElementUtils.elementText(txt_InvalidCredentials);
+				if(expected.equals(actual))
 				{
-					Logout.logout();
+					AssertUtils.softAssertFail("Element is not visible!...");
 				}
 			}
 			catch(Exception e)
 			{
+				AssertUtils.softAssertFail("Test is faild due to this");
 				System.out.println("Element not displayed!...");
 			}
+			finally
+			{
+				if(!expected.equals(actual))
+				{
+					Logout.logout();
+				}
+			}
 		}
+
 	}
 
 }

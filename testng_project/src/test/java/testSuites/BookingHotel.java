@@ -1,5 +1,6 @@
 package testSuites;
 
+import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -7,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.internal.Locatable;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -41,14 +41,12 @@ public class BookingHotel {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 		WebElement day = driver.findElement(By.xpath("//span[contains(text(),'1 day')]"));
 		wait.until(ExpectedConditions.visibilityOf(day));
-		((Locatable) day).getCoordinates().inViewPort();
 		day.click();
 		Thread.sleep(3000);
 		WebElement clickAdultsdd = driver.findElement(By.xpath("//span[contains(.,'2 adults · 0 children · 1 room')]"));
-		((Locatable) clickAdultsdd).getCoordinates().inViewPort();
 		clickAdultsdd.click();
 		String xpath = "//label[contains(.,'%s')]/ancestor::div[contains(@class,'f340be2edd')]/descendant::button[1]/following-sibling::span";
 		String plusButton = "//label[contains(.,'%s')]/ancestor::div[contains(@class,'f340be2edd')]/descendant::button[2]/span";

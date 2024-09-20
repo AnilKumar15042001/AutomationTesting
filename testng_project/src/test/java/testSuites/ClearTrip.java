@@ -1,5 +1,6 @@
 package testSuites;
 
+import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -69,7 +70,7 @@ public class ClearTrip {
 		}
 	}
 	public static void datePickers(WebDriver driver,By currentDateXpath,By rightArrowButton,String listXpath,String... futureDate) throws InterruptedException {
-		wait=new WebDriverWait(driver,10);
+		wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		while(true)
 		{
 			String currentDate=driver.findElement(currentDateXpath).getText();
