@@ -64,8 +64,9 @@ public class Amazon {
 						{
 							Select select = new Select(quantityDropdown);
 							select.selectByVisibleText(dropdown);
-							driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
 							Thread.sleep(3000);
+							driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
+							Thread.sleep(2000);
 							driver.navigate().refresh();
 						}
 						else

@@ -9,7 +9,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 		features = "features",
 		glue = "stepdefinitions",
-		dryRun = false
+		dryRun = false,
+		plugin = {"pretty","html:target/html-report.html"}
 		)
 public class TestRunner extends AbstractTestNGCucumberTests{
 

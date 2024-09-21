@@ -58,7 +58,7 @@ public class MakeMyTrip {
 		By chooseTravelClass=By.xpath("//p[contains(.,'CHOOSE TRAVEL CLASS')]/following-sibling::ul/li");
 		ClearTrip.dropdown(driver,chooseTravelClass,"Business");
 		driver.findElement(By.xpath("//button[contains(.,'APPLY')]")).click();
-		driver.close();
+		driver.quit();
 	}
 
 }

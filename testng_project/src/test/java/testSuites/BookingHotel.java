@@ -53,7 +53,7 @@ public class BookingHotel {
 		adultsChildrenRooms(driver, xpath, plusButton, "Adults", "10");
 		adultsChildrenRooms(driver, xpath, plusButton, "Rooms", "10");
 		driver.findElement(By.xpath("//button[@type='submit']/child::span[contains(.,'Search')]")).click();
-		driver.close();
+		driver.quit();
 	}
 
 	public static void adultsChildrenRooms(WebDriver driver, String xpath, String plusButton, String... value) {

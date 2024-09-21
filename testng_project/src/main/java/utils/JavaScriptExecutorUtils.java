@@ -15,6 +15,10 @@ public class JavaScriptExecutorUtils {
 		executor=(JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
+	public static void scrollToElement(WebElement element) {
+		executor=(JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
 	
 	public static String getElementInnerText(By by) throws Exception
 	{

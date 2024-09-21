@@ -55,7 +55,7 @@ public class ClearTrip {
 		driver.findElement(By.xpath("//button[contains(@style,'min-width: 185px; height: 52px;')]")).click();
 		datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","September","22");
 		driver.findElement(By.xpath("//span[contains(.,'Search flights')]")).click();
-		driver.close();
+		driver.quit();
 	}
 	public static void dropdown(WebDriver driver,By xpath,String value) {
 		List<WebElement> elements=driver.findElements(xpath);

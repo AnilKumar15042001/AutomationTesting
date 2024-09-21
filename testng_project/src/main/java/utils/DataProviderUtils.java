@@ -1,14 +1,5 @@
 package utils;
 
-import org.testng.annotations.Test;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-
-import static utils.ExcelUtils.*;
-
-import java.io.FileInputStream;
-
 public class DataProviderUtils {
 
 	public static Object[][] excelDataProvider() throws Exception {
