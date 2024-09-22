@@ -23,15 +23,15 @@ Feature: Amazon AddToCart functionality
     And User close the browser
     
     Examples:
-    | ProductName | Quantity |
-    #| shoes | 2 |
-    #| mobile | 2 |
-    #| shirt | 3 |
-    #| pant | 2 |
-    #| mouse | 1 |
-    #| laptop | 1 |
-    #| t-shirt | 3 |
-    #| watch | 2 |
-    | bag | 2 |
-    | cap | 3 |
+    |ProductName|Quantity|
+    |shoes      |2       |
+    |mobile     |2       |
+    |shirt      |3       |
+    |pant       |2       |
+    |mouse      |1       |
+    |laptop     |1       |
+    |t-shirt    |3       |
+    |watch      |2       |
+    |bag        |2       |
+    |cap        |3       |
     
