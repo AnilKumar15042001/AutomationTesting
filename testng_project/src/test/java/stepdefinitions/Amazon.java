@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import static utils.BrowserUtils.driver;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -11,11 +12,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utils.BrowserUtils;
 import utils.JavaScriptExecutorUtils;
+import utils.TakeScreenshotUtils;
 import utils.WindowsUtils;
 
 public class Amazon {
@@ -46,7 +50,8 @@ public class Amazon {
 	}
 
 	@When("User entered product name as {string} in search text field and click on search button")
-	public void user_entered_product_name_as_in_search_text_field_and_click_on_search_button(String string) {
+	public void user_entered_product_name_as_in_search_text_field_and_click_on_search_button(String string)
+			throws IOException {
 		driver.findElement(By.id("twotabsearchtextbox")).clear();
 		driver.findElement(By.id("twotabsearchtextbox")).sendKeys(string, Keys.ENTER);
 	}
@@ -58,28 +63,31 @@ public class Amazon {
 	}
 
 	@When("User click on first item of results page and select quantity as {string}")
-	public void user_click_on_first_item_of_results_page_and_select_quantity_as(String string)throws InterruptedException {
+	public void user_click_on_first_item_of_results_page_and_select_quantity_as(String string)
+			throws InterruptedException {
 		driver.findElement(By.xpath("(//*[@class='rush-component']/descendant::img)[position()=1]")).click();
 		WindowsUtils.handleWindows(driver.getTitle());
 		try {
 			Thread.sleep(3000);
-			WebElement quantityDropdown = driver.findElement(By.xpath("//select[@id='quantity']/following-sibling::span"));
+			WebElement quantityDropdown = driver
+					.findElement(By.xpath("//select[@id='quantity']/following-sibling::span"));
 			JavaScriptExecutorUtils.scrollToElement(quantityDropdown);
 			quantityDropdown.click();
 			Thread.sleep(3000);
 			if (quantityDropdown.isDisplayed()) {
-				List<WebElement> elements = driver.findElements(By.xpath("//ul[@role='listbox']/child::li[@role='option']/child::a"));
+				List<WebElement> elements = driver
+						.findElements(By.xpath("//ul[@role='listbox']/child::li[@role='option']/child::a"));
 				for (WebElement element : elements) {
-					System.out.println(element.getText());
 					if (element.getText().equals(string)) {
+						System.out.println(element.getText());
 						element.click();
 						break;
 					}
-					
+
 				}
 			}
 		} catch (Exception e) {
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 		}
 
 	}
@@ -94,7 +102,8 @@ public class Amazon {
 			driver.navigate().refresh();
 		} catch (Exception e) {
 			Thread.sleep(2000);
-			WebElement addToCart = driver.findElement(By.xpath("//div[@id='a-accordion-auto-9']/descendant::input[@id='add-to-cart-button']"));
+			WebElement addToCart = driver.findElement(
+					By.xpath("//div[@id='a-accordion-auto-9']/descendant::input[@id='add-to-cart-button']"));
 			System.out.println(addToCart.isDisplayed());
 			JavaScriptExecutorUtils.scrollToElement(addToCart);
 			addToCart.click();
@@ -111,12 +120,11 @@ public class Amazon {
 
 	@Then("User should be displayed page heading as {string}")
 	public void user_should_be_displayed_page_heading_as(String string) throws InterruptedException {
-		try
-		{
-			String shopping_cart = driver.findElement(By.xpath("//*[@class='a-row']/h2[contains(.,'Shopping Cart')]")).getText();
+		try {
+			String shopping_cart = driver.findElement(By.xpath("//*[@class='a-row']/h2[contains(.,'Shopping Cart')]"))
+					.getText();
 			Assert.assertEquals(shopping_cart, string, "Shopping cart page is not displayed!...");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			Thread.sleep(1000);
 		}
 
@@ -125,7 +133,8 @@ public class Amazon {
 	@Then("User validate item price and quantity")
 	public void user_validate_item_price_and_quantity() throws InterruptedException {
 		try {
-			WebElement priceAndItems=driver.findElement(By.xpath("//div[contains(@class,'a-row a-spacing-mini sc-subtotal sc-subtotal-activecart sc-java-remote-feature')]"));
+			WebElement priceAndItems = driver.findElement(By.xpath(
+					"//div[contains(@class,'a-row a-spacing-mini sc-subtotal sc-subtotal-activecart sc-java-remote-feature')]"));
 			Assert.assertTrue(priceAndItems.isDisplayed(), "Not displayed!...");
 			System.out.println(priceAndItems.getText());
 		} catch (Exception e) {

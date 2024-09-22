@@ -26,3 +26,10 @@ Feature: Amazon AddToCart functionality
     | ProductName | Quantity |
     | shoes | 2 |
     | mobile | 2 |
+    | shirt | 3 |
+    | pant | 2 |
+    | mouse | 1 |
+    | laptop | 1 |
+    | t-shirt | 3 |
+    | watch | 2 |
+    
