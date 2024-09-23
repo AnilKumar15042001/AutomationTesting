@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-22T16:53:49 IST" name="Default suite" finished-at="2024-09-22T16:56:48 IST" duration-ms="178891">
+  <suite started-at="2024-09-23T08:02:29 IST" name="Default suite" finished-at="2024-09-23T08:15:01 IST" duration-ms="752034">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-09-22T16:53:49 IST" name="Default test" finished-at="2024-09-22T16:56:48 IST" duration-ms="178891">
+    <test started-at="2024-09-23T08:02:29 IST" name="Default test" finished-at="2024-09-23T08:15:01 IST" duration-ms="752034">
       <class name="testrunner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-22T16:53:49 IST" name="setUpClass" finished-at="2024-09-22T16:53:49 IST" duration-ms="582" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:02:29 IST" name="setUpClass" finished-at="2024-09-23T08:02:30 IST" duration-ms="567" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1e79d43]]>
+                <![CDATA[org.testng.TestRunner@6335f04a]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-22T16:53:49 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-22T16:55:18 IST" duration-ms="89039" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:02:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:04:12 IST" duration-ms="101843" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,7 +37,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-22T16:55:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-22T16:56:48 IST" duration-ms="89220" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:04:12 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:04:57 IST" duration-ms="45491" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -53,7 +53,135 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-22T16:56:48 IST" name="tearDownClass" finished-at="2024-09-22T16:56:48 IST" duration-ms="19" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:04:57 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:06:25 IST" duration-ms="87837" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:06:25 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:08:05 IST" duration-ms="99680" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:08:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:08:41 IST" duration-ms="36619" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:08:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:09:26 IST" duration-ms="44702" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:09:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:11:07 IST" duration-ms="101235" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:11:07 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:11:41 IST" duration-ms="33681" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:11:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:13:21 IST" duration-ms="100104" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:13:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-09-23T08:15:01 IST" duration-ms="100225" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Add items to cart using Outline approach"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Amazon AddToCart functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:testrunner.TestRunner@397fbdb]" started-at="2024-09-23T08:15:01 IST" name="tearDownClass" finished-at="2024-09-23T08:15:01 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

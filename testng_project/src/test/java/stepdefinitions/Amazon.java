@@ -58,15 +58,20 @@ public class Amazon {
 			JavaScriptExecutorUtils.scrollToElement(quantityDropdown);
 			quantityDropdown.click();
 			Thread.sleep(3000);
+			WebElement firstElement = null;
 			if (quantityDropdown.isDisplayed()) {
 				List<WebElement> elements = driver.findElements(By.xpath("//ul[@role='listbox']/child::li[@role='option']/child::a"));
 				for (WebElement element : elements) {
+					firstElement=element;
 					if (element.getText().equals(string)) {
 						System.out.println(element.getText());
 						element.click();
 						break;
 					}
-
+				}
+				if(!(firstElement==null))
+				{
+					firstElement.click();
 				}
 			}
 		} catch (Exception e) {
@@ -91,7 +96,6 @@ public class Amazon {
 			Thread.sleep(1000);
 			try {
 				WebElement addToCart = driver.findElement(By.xpath("//div[@id='a-accordion-auto-9']/descendant::input[@id='add-to-cart-button']"));
-				System.out.println(addToCart.isDisplayed());
 				JavaScriptExecutorUtils.scrollToElement(addToCart);
 				addToCart.click();
 			} catch (Exception e2) {
