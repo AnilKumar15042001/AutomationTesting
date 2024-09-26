@@ -4,8 +4,7 @@ import java.awt.Window;
 import java.util.Set;
 
 import org.openqa.selenium.WindowType;
-
-import static utils.BrowserUtils.driver;
+import static components.AppCommon.driver;
 public class WindowsUtils {
 
 	public static void handleWindows(String title) {
@@ -19,23 +18,31 @@ public class WindowsUtils {
 		}
 	}
 	
-	public static void createNewTab() {
-		driver.switchTo().newWindow(WindowType.TAB);
-	}
-	
-	public static void createNewWindow() {
-		driver.switchTo().newWindow(WindowType.WINDOW);
+	public static void createNewTabOrWindow(String type) {
+		switch (type) {
+		case "tab":driver.switchTo().newWindow(WindowType.TAB);
+		break;
+		case "window":driver.switchTo().newWindow(WindowType.WINDOW);
+		break;
+		default:System.out.println("Invalid window type!...");
+		break;
+		}
 	}
 	
 	public static String getWindowTitle(String window) {
 		return driver.switchTo().window(window).getTitle();
 	}
 	
-	public static void maximizeWindow() {
-		driver.manage().window().maximize();
-	}
-	
-	public static void minimizeWindow() {
-		driver.manage().window().minimize();
+	public static void handleWindowSize(String windowSize) {
+		switch (windowSize) {
+		case "max":driver.manage().window().maximize();
+		break;
+		case "min":driver.manage().window().minimize();
+		break;
+		case "full":driver.manage().window().fullscreen();
+		break;
+		default:System.out.println("Invalid inputs!...");
+		break;
+		}
 	}
 }

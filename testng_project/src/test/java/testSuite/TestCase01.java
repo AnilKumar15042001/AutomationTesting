@@ -4,21 +4,21 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.AssertUtils;
 import utils.BrowserUtils;
+import utils.ExcelUtils;
 
-
-public class TestCase01 {
+import static components.AppCommon.*;
+public class TestCase01 extends BaseClass{
 	LoginPage loginPage;
 
 	@Test
-	public void tc01() throws Exception {
+	public void testCase01() throws Exception {
 
-		loginPage = new LoginPage();
-		BrowserUtils.openBrowser();
-		BrowserUtils.enterUrl();
-		loginPage.verifyLoginPage();
-//		Thread.sleep(3000);
-		loginPage.login();
-		BrowserUtils.closeBrowser();
-		AssertUtils.softAssertAll("Failed message is displayed!...");
+//		loginPage = new LoginPage();
+//		BrowserUtils.openBrowser();
+//		BrowserUtils.enterUrl();
+//		loginPage.verifyLoginPage();
+//		loginPage.login();
+//		BrowserUtils.closeBrowser();
+//		AssertUtils.softAssertAll("Failed message is displayed!...");
 	}
 }

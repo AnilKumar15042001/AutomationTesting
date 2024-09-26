@@ -1,65 +1,44 @@
 package testSuites;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
+import static testSuites.Amazon.driver;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.ITestNGMethod;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import testSuite.BaseClass;
 import utils.ExcelUtils;
-import utils.ITestResultUtils;
+import static components.AppCommon.testName;
 
-import static testSuites.Amazon.driver;
-
-public class RetrieveData {
-	String methodName;
-	String className;
+public class RetrieveData extends BaseClass {
 	Map<String, String> map;
-	List<String> list;
 
 	@Test
 	public void testcase09() throws IOException {
-		String method = methodName;
+		String method = testName;
 		String filePath = "C:\\AutomationTesting\\testng_project\\src\\test\\resources\\TestData\\Amazon.xlsx";
 		map = new HashMap<String, String>();
-		list = new ArrayList<String>();
 		int rows = ExcelUtils.getRowCount(filePath, "sheet2");
 		for (int r = 1; r <= rows; r++) {
 			String celldata = ExcelUtils.getCellData(filePath, "sheet2", r, 0);
 			int cols = ExcelUtils.getCellCount(filePath, "sheet2", r);
-			if (methodName.equals(celldata)) {
+			if (testName.equals(celldata)) {
 				for (int c = 1; c < cols; c++) {
-					String header = ExcelUtils.getCellData(filePath, "sheet2", 0, c);
-					String oneRowData = ExcelUtils.getCellData(filePath, "sheet2", r, c);
-					list.add(header);
-					map.put(header, oneRowData);
+					String key = ExcelUtils.getCellData(filePath, "sheet2", 0, c);
+					String value = ExcelUtils.getCellData(filePath, "sheet2", r, c);
+					map.put(key, value);
 				}
 			}
 		}
-	}
-
-	@BeforeMethod
-	public void getCurrentMethodName(ITestResult result) {
-		methodName = result.getMethod().getMethodName();
-		className = result.getMethod().getTestClass().getRealClass().getSimpleName();
-		ITestResultUtils.getCurrentClassName(result);
+		System.out.println(map);
 	}
 
 	@AfterMethod

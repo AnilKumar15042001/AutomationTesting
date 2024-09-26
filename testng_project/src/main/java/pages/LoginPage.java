@@ -1,26 +1,20 @@
 package pages;
 
-import static utils.BrowserUtils.driver;
+import static components.AppCommon.driver;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import applicationCommonMethods.Logout;
+import locators.LoginPageObj;
 import utils.AssertUtils;
 import utils.DataProviderUtils;
 import utils.ElementUtils;
 import utils.ExcelUtils;
 import utils.PropertiesUtils;
 
-public class LoginPage {
-
-	By username_TextField = By.name("username");
-	By password_TextField = By.name("password");
-	By login_btn = By.xpath("//button[@type='submit']");
-	By heading = By.xpath("//h5[text()='Login']");
-	By txt_InvalidCredentials = By.xpath("//*[text()='Invalid credentials']");
+public class LoginPage extends LoginPageObj{
 
 	public void setUsername_TextField(String username) throws Exception {
 		ElementUtils.textField(username_TextField, username);

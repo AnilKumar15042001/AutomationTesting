@@ -1,9 +1,8 @@
 package utils;
 
 import org.testng.asserts.SoftAssert;
-
+import static components.AppCommon.softAssert;
 public class AssertUtils {
-	public static SoftAssert softAssert;
 	
 	public static SoftAssert getSoftAssertObject() {
 		if(softAssert==null)

@@ -1,24 +1,19 @@
 package utils;
 
+import static components.AppCommon.driver;
+import static components.AppCommon.element;
+import static components.AppCommon.select;
+
+import java.util.List;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import static utils.BrowserUtils.driver;
-
-import java.time.Duration;
-import java.util.List;
-
 public class ElementUtils {
-
-	public static WebElement element;
-	public static Select select;
-	public static Actions actions;
 
 	public static boolean isElementPresent(By by) {
 		try {
@@ -31,7 +26,7 @@ public class ElementUtils {
 
 	// locate
 	public static WebElement locateElement(By by) throws Exception {
-		for (int i = 0; i < 5; i++) {
+		for (int i=0;i<5;i++) {
 			try {
 				element = driver.findElement(by);
 				break;

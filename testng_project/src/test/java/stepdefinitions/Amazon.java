@@ -1,27 +1,21 @@
 package stepdefinitions;
 
-import static utils.BrowserUtils.driver;
+import static components.AppCommon.driver;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utils.BrowserUtils;
 import utils.ElementUtils;
 import utils.JavaScriptExecutorUtils;
-import utils.TakeScreenshotUtils;
 import utils.WindowsUtils;
 
 public class Amazon {
@@ -29,6 +23,12 @@ public class Amazon {
 	@Given("User launch the browser")
 	public void user_launch_the_browser() throws Exception {
 		BrowserUtils.openBrowser();
+//		String url="http://192.168.29.39:4444";
+//		DesiredCapabilities capabilities=new DesiredCapabilities();
+//		capabilities.setPlatform(Platform.WINDOWS);
+//		capabilities.setBrowserName("chrome");
+//		driver=new RemoteWebDriver(new URL(url), capabilities);
+//		driver.manage().window().maximize();
 	}
 
 	@Given("User enter url to the browser as {string}")

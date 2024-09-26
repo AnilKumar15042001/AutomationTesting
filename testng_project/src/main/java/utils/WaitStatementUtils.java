@@ -13,8 +13,9 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static components.AppCommon.wait;
+
 public class WaitStatementUtils {
-	public static WebDriverWait wait;
 	
 	public static void implicitly_Wait(WebDriver driver,int seconds) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));

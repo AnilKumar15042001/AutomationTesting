@@ -13,9 +13,9 @@ import org.openqa.selenium.WebDriverException;
 
 import io.cucumber.java.Scenario;
 
-public class TakeScreenshotUtils {
+import static components.AppCommon.driver;
 
-	public static FileUtils fileUtils;
+public class TakeScreenshotUtils {
 	
 	public static TakesScreenshot getScreenShotObj() {
 		return ((TakesScreenshot) driver);

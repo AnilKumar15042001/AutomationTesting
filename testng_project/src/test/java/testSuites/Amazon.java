@@ -16,6 +16,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -49,7 +50,9 @@ public class Amazon {
 				if (c == 1 || c == 2) {
 					searchvalue = sheet.getRow(r).getCell(1).toString();
 					dropdown = sheet.getRow(r).getCell(2).toString();
+					System.out.println(dropdown);
 					dropdown = dropdown.replace(dropdown.substring(dropdown.indexOf('.')), "");
+					System.out.println(dropdown);
 					driver.findElement(By.id("twotabsearchtextbox")).clear();
 					driver.findElement(By.id("twotabsearchtextbox")).sendKeys(searchvalue, Keys.ENTER);
 					driver.findElement(By.xpath("(//*[@class='rush-component']/descendant::img)[position()=1]")).click();
@@ -65,12 +68,6 @@ public class Amazon {
 							Select select = new Select(quantityDropdown);
 							select.selectByVisibleText(dropdown);
 							Thread.sleep(3000);
-							driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
-							Thread.sleep(2000);
-							driver.navigate().refresh();
-						}
-						else
-						{
 							driver.findElement(By.xpath("//input[@id='add-to-cart-button']")).click();
 							driver.navigate().refresh();
 						}

@@ -1,11 +1,9 @@
 package testSuite;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.Test;
+import static components.AppCommon.driver;
+
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-
-import static utils.BrowserUtils.driver;
 
 import utils.BrowserUtils;
 import utils.PropertiesUtils;

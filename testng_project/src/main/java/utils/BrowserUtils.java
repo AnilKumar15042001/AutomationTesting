@@ -1,12 +1,7 @@
 package utils;
 
-import java.time.Duration;
+import static components.AppCommon.driver;
 
-//import static utils.PropertiesUtils.properties;
-
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,7 +10,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserUtils {
 
-	public static WebDriver driver;
 	public static void openBrowser() throws Exception {
 		switch (PropertiesUtils.getKeyValue("browser")) {
 		case "chrome":
@@ -37,7 +31,7 @@ public class BrowserUtils {
 			return;
 		}
 		WaitStatementUtils.implicitly_Wait(driver, 10);
-		WindowsUtils.maximizeWindow();
+		WindowsUtils.handleWindowSize("max");
 //		String url="http://192.168.28.30:4444";
 //		DesiredCapabilities capabilities=new DesiredCapabilities();
 //		capabilities.setPlatform(Platform.WINDOWS);
@@ -52,6 +46,17 @@ public class BrowserUtils {
 	public static void closeBrowser() {
 		driver.quit();
 	}
-
 	
+	public static void navigatePage(String page) {
+		switch (page) {
+		case "refresh":driver.navigate().refresh();
+		break;
+		case "back":driver.navigate().back();
+	    break;
+		case "forward":driver.navigate().forward();
+		break;
+		default:System.out.println("Invalid inputs!...");
+		break;
+		}
+	}
 }

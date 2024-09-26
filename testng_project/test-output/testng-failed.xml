@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testrunner.TestRunner">
+      <class name="testSuites.RetrieveData">
         <methods>
-          <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="1"/>
-          <include name="tearDownClass"/>
+          <include name="testcase09"/>
+          <include name="closeBrowser"/>
+          <include name="name"/>
         </methods>
-      </class> <!-- testrunner.TestRunner -->
+      </class> <!-- testSuites.RetrieveData -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
