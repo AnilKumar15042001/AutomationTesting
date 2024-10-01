@@ -19,6 +19,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 
 public class ExcelUtils{
 
@@ -42,8 +43,7 @@ public class ExcelUtils{
 		return cellCount;
 	}
 
-	public static String getCellData(String xlsxFile, String xlsxSheet, int rowNumber, int colNumber)
-			throws IOException {
+	public static String getCellData(String xlsxFile, String xlsxSheet, int rowNumber, int colNumber)throws IOException {
 		fileInputStream = new FileInputStream(xlsxFile);
 		workbook = new XSSFWorkbook(fileInputStream);
 		sheet = workbook.getSheet(xlsxSheet);
@@ -111,29 +111,5 @@ public class ExcelUtils{
 		default:
 			return null;
 		}
-	}
-	
-	public static void testCase01() throws Exception {
-		String filePath=PropertiesUtils.getKeyValue("excelFilePath");
-		String sheetName=PropertiesUtils.getKeyValue("sheet");
-		int rowNum = 0;
-		int rows=ExcelUtils.getRowCount(filePath, sheetName);
-		for(int row=0;row<=rows;row++)
-		{
-			if(testName.equals(ExcelUtils.getCellData(filePath, sheetName, row, 0)))
-			{
-				rowNum = row;
-				break;
-			}
-		}
-		map=new HashMap<String, String>();
-		int cells=ExcelUtils.getCellCount(filePath, sheetName, 0);
-		for(int cell=0;cell<cells;cell++)
-		{
-			String key=ExcelUtils.getCellData(filePath, sheetName, 0, cell);
-			String value=ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
-			map.put(key, value);
-		}
-		System.out.println(map);
 	}
 }
