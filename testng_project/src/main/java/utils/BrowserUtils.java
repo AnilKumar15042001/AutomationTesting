@@ -39,7 +39,7 @@ public class BrowserUtils {
 //		WebDriver driver=new RemoteWebDriver(new URL(url), capabilities);
 	}
 
-	public static void enterUrl() throws Exception {
+	public static void launchUrl() throws Exception {
 		driver.get(PropertiesUtils.getPropertyValue().getProperty("url"));
 	}
 

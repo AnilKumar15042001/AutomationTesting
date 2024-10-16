@@ -30,7 +30,7 @@ public class ClearTrip {
 		driver.manage().window().maximize();
 		driver.navigate().to("https://www.cleartrip.com/");
 		driver.navigate().refresh();
-		driver.findElement(By.xpath("//div[@class='p-relative']//div[@class='flex flex-middle']")).click();
+//		driver.findElement(By.xpath("//div[@class='p-relative']//div[@class='flex flex-middle']")).click();
 //		By way=By.xpath("//div[contains(@class,'bg-white br-4 elevation-5 p-1 p-absolute mt-2 z-50 l-0')]/child::ul/li//span");
 //		dropdown(driver,way,"Round");
 		By fare=By.xpath("//div[@class='flex flex-row flex-middle mt-8']//div");
@@ -51,9 +51,9 @@ public class ClearTrip {
 		By rightArrowButton=By.xpath("//div[contains(@class,'flex-1 ta-right')]//*[@data-testid='rightArrow']");
 		String listXpath="//div[contains(text(),'%s')]/ancestor::div[@role='grid']/descendant::div[@role='gridcell']/div/div";
 		driver.findElement(By.xpath("//div[@class='fs-4 fw-500 c-inherit flex flex-nowrap ml-4']")).click();
-		datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","September","20");
+		datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","October","20");
 		driver.findElement(By.xpath("//button[contains(@style,'min-width: 185px; height: 52px;')]")).click();
-		datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","September","22");
+		datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2025","January","22");
 		driver.findElement(By.xpath("//span[contains(.,'Search flights')]")).click();
 		driver.quit();
 	}

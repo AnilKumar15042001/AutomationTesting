@@ -94,7 +94,7 @@ public class ElementUtils {
 		}
 	}
 
-	public static void selectElement(By selectField,By multiValues, String value) {
+	public static void selectElement(By selectField, String value) {
 		try
 		{
 			if(ElementUtils.locateElement(selectField).getTagName().equals("select"))
@@ -102,19 +102,25 @@ public class ElementUtils {
 				select=new Select(ElementUtils.locateElement(selectField));
 				select.selectByVisibleText(value);
 			}
-			else
-			{
-				List<WebElement> options = driver.findElements(multiValues);
-				for (WebElement option : options) {
-					if (option.getText().equalsIgnoreCase(value)) {
-						option.click();
-						break;
-					}
+		}
+		catch (Exception e) {
+			
+		}
+	}
+	
+	public static void selectElement(String value,By by) {
+		try
+		{
+			List<WebElement> options = driver.findElements(by);
+			for (WebElement option : options) {
+				if (option.getText().equalsIgnoreCase(value)) {
+					option.click();
+					break;
 				}
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			
 		}
 	}
 	

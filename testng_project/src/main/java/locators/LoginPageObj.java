@@ -9,4 +9,5 @@ public class LoginPageObj {
 	public By login_btn = By.xpath("//button[@type='submit']");
 	public By heading = By.xpath("//h5[text()='Login']");
 	public By txt_InvalidCredentials = By.xpath("//*[text()='Invalid credentials']");
+	public By txt_Required = By.xpath("//*[text()='Required']");
 }

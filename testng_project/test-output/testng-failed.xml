@@ -6,8 +6,8 @@
       <class name="testSuite.TestCase01">
         <methods>
           <include name="testCase02"/>
+          <include name="getTestData"/>
           <include name="getCurrentMethodAndClass"/>
-          <include name="getExcelData"/>
         </methods>
       </class> <!-- testSuite.TestCase01 -->
     </classes>

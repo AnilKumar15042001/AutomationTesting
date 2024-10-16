@@ -1,6 +1,6 @@
 package pages;
 
-import static components.AppCommon.*;
+import static components.AppCommon.map;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -10,12 +10,9 @@ import org.testng.asserts.SoftAssert;
 import locators.DashboardPageObj;
 import locators.LoginPageObj;
 import utils.AssertUtils;
-import utils.BrowserUtils;
 import utils.DataProviderUtils;
 import utils.ElementUtils;
-import utils.ExcelUtils;
 import utils.FrameworkUtils;
-import utils.PropertiesUtils;
 
 public class LoginPage extends LoginPageObj {
 
@@ -69,20 +66,17 @@ public class LoginPage extends LoginPageObj {
 		setLogin_btn();
 		try {
 			if (map.get("Expected").equals(ElementUtils.elementText(txt_InvalidCredentials))) {
-				FrameworkUtils.setDataToExcel("Actual", ElementUtils.elementText(txt_InvalidCredentials));
-				FrameworkUtils.setDataToExcel("Status", "Pass");
+				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(txt_InvalidCredentials));
+				FrameworkUtils.updateTestData("Status", "Pass");
 			}
 		} catch (Exception e) {
-			if(map.get("Expected").equals(ElementUtils.elementText(new DashboardPageObj().heading)))
-			{
-				FrameworkUtils.setDataToExcel("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
-				FrameworkUtils.setDataToExcel("Status", "Pass");
+			if (map.get("Expected").equals(ElementUtils.elementText(new DashboardPageObj().heading))) {
+				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
+				FrameworkUtils.updateTestData("Status", "Pass");
 				Logout.logout();
-			}
-			else
-			{
-				FrameworkUtils.setDataToExcel("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
-				FrameworkUtils.setDataToExcel("Status", "Fail");
+			} else {
+				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
+				FrameworkUtils.updateTestData("Status", "Fail");
 				Logout.logout();
 				AssertUtils.softAssertFail("Fail");
 			}

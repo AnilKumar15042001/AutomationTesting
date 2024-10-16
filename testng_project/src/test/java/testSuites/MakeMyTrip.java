@@ -44,10 +44,10 @@ public class MakeMyTrip {
 		By currentDateXpath=By.xpath("(//div[@role='heading'])[1]");
 		By rightArrowButton=By.xpath("//span[contains(@aria-label,'Next Month')]");
 		String listXpath="//div[contains(text(),'%s')]/ancestor::div[@role='grid']/descendant::div[@class='dateInnerCell']/p[1]";
-		ClearTrip.datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","September","1");
+		ClearTrip.datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","October","22");
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//span[text()='Return']")).click();
-		ClearTrip.datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","September","2");
+		ClearTrip.datePickers(driver,currentDateXpath,rightArrowButton,listXpath,"2024","October","23");
 		driver.findElement(By.xpath("//span[contains(.,'Travellers & Class')]")).click();
 		By adults=By.xpath("//p[contains(.,'ADULTS')]/following-sibling::ul[contains(@class,'guestCounter font12 darkText gbCounter')]/li");
 		ClearTrip.dropdown(driver,adults,"1");

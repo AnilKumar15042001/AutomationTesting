@@ -12,7 +12,7 @@ public class TestCase02 {
   @Test
   public void tc02() throws Exception {
 	  BrowserUtils.openBrowser();
-	  BrowserUtils.enterUrl();
+	  BrowserUtils.launchUrl();
 	  driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys(PropertiesUtils.getPropertyValue().getProperty("username"));
 	  driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys(PropertiesUtils.getPropertyValue().getProperty("password"));
 	  Thread.sleep(3000);

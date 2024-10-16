@@ -3,6 +3,7 @@ package components;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -48,4 +49,7 @@ public class AppCommon {
 	
 	//Map
 	public static HashMap<String, String> map;
+	public static HashMap<String, Object> instanceMap;
+	public static List<String> list;
+	public static List<String> object;
 }
