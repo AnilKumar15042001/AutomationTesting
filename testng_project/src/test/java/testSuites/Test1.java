@@ -4,16 +4,11 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.Test;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Test1 {
 	@Test
@@ -21,7 +16,7 @@ public class Test1 {
 		
 		String url="http://localhost:4444";
 		DesiredCapabilities capabilities=new DesiredCapabilities();
-		capabilities.setPlatform(Platform.LINUX);
+		capabilities.setPlatform(Platform.WINDOWS);
 		capabilities.setBrowserName("chrome");
 		
 		WebDriver driver=new RemoteWebDriver(new URL(url), capabilities);

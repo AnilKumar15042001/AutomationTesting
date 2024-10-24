@@ -1,52 +1,44 @@
 package utils;
 
-import static components.AppCommon.cell;
-import static components.AppCommon.fileInputStream;
-import static components.AppCommon.fileOutputStream;
-import static components.AppCommon.map;
-import static components.AppCommon.row;
-import static components.AppCommon.sheet;
-import static components.AppCommon.testName;
-import static components.AppCommon.workbook;
+import static components.AppCommon.*;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 
 public class ExcelUtils{
-
-	public static int getRowCount(String xlsxFile, String xlsxSheet) throws IOException {
+	
+	
+	public static void loadExcel(String xlsxFile, String xlsxSheet) throws Exception {
 		fileInputStream = new FileInputStream(xlsxFile);
 		workbook = new XSSFWorkbook(fileInputStream);
 		sheet = workbook.getSheet(xlsxSheet);
+	}
+
+	public static int getRowCount(String xlsxFile, String xlsxSheet) throws Exception {
+		loadExcel(xlsxFile, xlsxSheet);
 		int rowCount = sheet.getLastRowNum();
 		workbook.close();
 		fileInputStream.close();
 		return rowCount;
 	}
 
-	public static int getCellCount(String xlsxFile, String xlsxSheet, int rowNumber) throws IOException {
-		fileInputStream = new FileInputStream(xlsxFile);
-		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(xlsxSheet);
+	public static int getCellCount(String xlsxFile, String xlsxSheet, int rowNumber) throws Exception {
+		loadExcel(xlsxFile, xlsxSheet);
 		int cellCount = sheet.getRow(rowNumber).getLastCellNum();
 		workbook.close();
 		fileInputStream.close();
 		return cellCount;
 	}
 
-	public static String getCellData(String xlsxFile, String xlsxSheet, int rowNumber, int colNumber)throws IOException {
-		fileInputStream = new FileInputStream(xlsxFile);
-		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(xlsxSheet);
+	public static String getCellData(String xlsxFile, String xlsxSheet, int rowNumber, int colNumber)throws Exception {
+		loadExcel(xlsxFile, xlsxSheet);
 		row = sheet.getRow(rowNumber);
 		cell = row.getCell(colNumber);
 		String data;
@@ -62,10 +54,8 @@ public class ExcelUtils{
 		return data;
 	}
 
-	public static void setCellData(String xlsxFile, String xlsxSheet, int rowNumber, int colNumber, String cellData)throws IOException {
-		fileInputStream = new FileInputStream(xlsxFile);
-		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(xlsxSheet);
+	public static void setCellData(String xlsxFile, String xlsxSheet, int rowNumber, int colNumber, String cellData)throws Exception {
+		loadExcel(xlsxFile, xlsxSheet);
 		row = sheet.getRow(rowNumber);
 		cell = row.createCell(colNumber);
 		cell.setCellValue(cellData);
@@ -76,10 +66,8 @@ public class ExcelUtils{
 		fileOutputStream.close();
 	}
 
-	public static Object[][] getExcelData(String filePath, String sheetName, int rowNumber) throws IOException {
-		fileInputStream = new FileInputStream(filePath);
-		workbook = new XSSFWorkbook(fileInputStream);
-		sheet = workbook.getSheet(sheetName);
+	public static Object[][] getExcelData(String filePath, String sheetName, int rowNumber) throws Exception {
+		loadExcel(filePath, sheetName);
 		int rowCount = getRowCount(filePath, sheetName);
 		int colCount = getCellCount(filePath, sheetName, rowNumber);
 		Object[][] data = new Object[rowCount][colCount];

@@ -46,10 +46,13 @@ public class AppCommon {
 	//Current class testName and className
 	public static String testName;
 	public static String className;
+	public static String packageName;
 	
 	//Map
-	public static HashMap<String, String> map;
-	public static HashMap<String, Object> instanceMap;
+	public static HashMap<String, String> dataDrivenMap;
+	public static HashMap<String, String> keywordDrivenMap;
+	public static HashMap<String, String> locatorsMap;
+	public static HashMap instanceMap;
 	public static List<String> list;
 	public static List<String> object;
 }

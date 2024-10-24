@@ -1,6 +1,6 @@
 package pages;
 
-import static components.AppCommon.map;
+import static components.AppCommon.*;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -9,7 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import locators.DashboardPageObj;
 import locators.LoginPageObj;
-import utils.AssertUtils;
+import utils.BrowserUtils;
 import utils.DataProviderUtils;
 import utils.ElementUtils;
 import utils.FrameworkUtils;
@@ -60,27 +60,30 @@ public class LoginPage extends LoginPageObj {
 	}
 
 	public void login() throws Exception {
-
-		setUsername_TextField(map.get("Username"));
-		setPassword_TextField(map.get("Password"));
+		setUsername_TextField(dataDrivenMap.get("Username"));
+		setPassword_TextField(dataDrivenMap.get("Password"));
 		setLogin_btn();
 		try {
-			if (map.get("Expected").equals(ElementUtils.elementText(txt_InvalidCredentials))) {
+			if (dataDrivenMap.get("Expected").equals(ElementUtils.elementText(txt_InvalidCredentials))) {
 				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(txt_InvalidCredentials));
 				FrameworkUtils.updateTestData("Status", "Pass");
 			}
 		} catch (Exception e) {
-			if (map.get("Expected").equals(ElementUtils.elementText(new DashboardPageObj().heading))) {
+			if (dataDrivenMap.get("Expected").equals(ElementUtils.elementText(new DashboardPageObj().heading))) {
 				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
 				FrameworkUtils.updateTestData("Status", "Pass");
-				Logout.logout();
-			} else {
-				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
-				FrameworkUtils.updateTestData("Status", "Fail");
-				Logout.logout();
-				AssertUtils.softAssertFail("Fail");
+			}
+			else
+			{
+				try {
+					FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
+					FrameworkUtils.updateTestData("Status", "Fail");
+					Logout.logout();
+					Assert.fail();
+				} finally {
+					BrowserUtils.closeBrowser();
+				}
 			}
 		}
 	}
-
 }

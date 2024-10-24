@@ -2,7 +2,6 @@ package testSuites;
 
 import static testSuites.Amazon.driver;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +21,7 @@ public class RetrieveData extends BaseClass {
 	Map<String, String> map;
 
 	@Test
-	public void testcase09() throws IOException {
+	public void testcase09() throws Exception {
 		String method = testName;
 		String filePath = "C:\\AutomationTesting\\testng_project\\src\\test\\resources\\TestData\\Amazon.xlsx";
 		map = new HashMap<String, String>();
