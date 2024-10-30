@@ -18,7 +18,7 @@ import utils.LocatorUtils;
 public class LoginPage extends LoginPageObj {
 
 	public LoginPage() throws Exception {
-		super();
+		super("LoginPageLocators");
 	}
 	
 	public void setUsername_TextField(String username) throws Exception {
@@ -47,19 +47,15 @@ public class LoginPage extends LoginPageObj {
 		setLogin_btn();
 		try {
 			if (dataDrivenMap.get("Expected").equals(ElementUtils.elementText(txt_InvalidCredentials))) {
-				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(txt_InvalidCredentials));
-				FrameworkUtils.updateTestData("Status", "Pass");
+				
 			}
 		} catch (Exception e) {
 			if (dataDrivenMap.get("Expected").equals(ElementUtils.elementText(new DashboardPageObj().heading))) {
-				FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
-				FrameworkUtils.updateTestData("Status", "Pass");
+				
 			}
 			else
 			{
 				try {
-					FrameworkUtils.updateTestData("Actual", ElementUtils.elementText(new DashboardPageObj().heading));
-					FrameworkUtils.updateTestData("Status", "Fail");
 					Logout.logout();
 					Assert.fail();
 				} finally {

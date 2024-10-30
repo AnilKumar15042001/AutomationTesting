@@ -14,6 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
@@ -22,6 +23,7 @@ public class AppCommon {
 
 	public static SoftAssert softAssert;
 	public static WebDriver driver;
+	public static DesiredCapabilities desiredCapabilities;
 	public static WebElement element;
 	public static Select select;
 	public static Actions actions;
@@ -49,11 +51,11 @@ public class AppCommon {
 	public static String packageName;
 	
 	//Map
-	public static HashMap<String, String> dataDrivenMap;
+	public static HashMap<String, String> dataDrivenMap = new HashMap<String, String>();
 	public static HashMap<String, String> keywordDrivenMap;
 	public static HashMap<String, String> locatorsMap;
 	public static HashMap<String, String> filesMap;
-	public static HashMap instanceMap;
+	public static HashMap<String,Object> instanceMap;
 	
 	//List
 	public static List<String> list;

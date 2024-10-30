@@ -37,7 +37,6 @@ public class PropertiesUtils {
 		return getPropertyValue().keySet();
 	}
 	
-	@Test
 	public static void setKeyAndValue() throws Exception
 	{
 		Set<Object> setFile=getKeys();

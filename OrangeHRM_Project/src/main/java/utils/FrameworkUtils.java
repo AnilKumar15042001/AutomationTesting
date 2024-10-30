@@ -5,14 +5,10 @@ import static components.AppCommon.*;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class FrameworkUtils {
-	
-	public static void loadFile() throws Exception {
-		filePath=PropertiesUtils.getKeyValue("filePath");
-		sheetName=PropertiesUtils.getKeyValue("sheetName");
-	}
 
 	public static int getRowNumber(String filePath,String sheetName,String methodName) throws Exception {
 		int rowNum = 0;
@@ -25,24 +21,26 @@ public class FrameworkUtils {
 		}
 		return rowNum;
 	}
-
-	public static void loadTestData() throws Exception {
-		String filePath=filesMap.get("testDataFile");
-		String sheetName=filesMap.get("testData");
+	
+	public static void loadTestData(String fileName,String testName) throws Exception {
+		getFiles(fileName);
+		String filePath=filesMap.get("FilePath");
+		String sheetName=filesMap.get("SheetName");
 		int rowNum = getRowNumber(filePath, sheetName, testName);
-		dataDrivenMap = new HashMap<String, String>();
+//		dataDrivenMap = new HashMap<String, String>();
 		int cells = ExcelUtils.getCellCount(filePath, sheetName, 0);
 		for (int cell = 0; cell < cells; cell++) {
 			String key = ExcelUtils.getCellData(filePath, sheetName, 0, cell);
 			String value = ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
 			dataDrivenMap.put(key, value);
 		}
-//		System.out.println(dataDrivenMap);
+		System.out.println(dataDrivenMap);
 	}
 
 	public static void updateTestData(String cellHeader, String cellvalue) throws Exception {
-		String filePath=filesMap.get("testDataFile");
-		String sheetName=filesMap.get("testData");
+		getFiles(PropertiesUtils.getKeyValue("testDataFile"));
+		String filePath=filesMap.get("FilePath");
+		String sheetName=filesMap.get("SheetName");
 		int rowNum = getRowNumber(filePath, sheetName, testName);
 		int cellNum = 0;
 		dataDrivenMap = new HashMap<String, String>();
@@ -51,7 +49,6 @@ public class FrameworkUtils {
 			String key = ExcelUtils.getCellData(filePath, sheetName, 0, cell);
 			String value = ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
 			dataDrivenMap.put(key, value);
-
 			if (key.equals(cellHeader)) {
 				cellNum = cell;
 			}
@@ -63,16 +60,16 @@ public class FrameworkUtils {
 				break;
 			}
 		}
-//		System.out.println(dataDrivenMap);
 	}
 
 	public static Set<String> getKeys() {
 		return dataDrivenMap.keySet();
 	}
-
-	public static void getKeywords() throws Exception {
-		String filePath=filesMap.get("keywordsFile");
-		String sheetName=filesMap.get("keywords");
+	
+	public static void getKeywords(String fileName,String testName) throws Exception {
+		getFiles(fileName);
+		String filePath=filesMap.get("FilePath");
+		String sheetName=filesMap.get("SheetName");
 		int rowNum = getRowNumber(filePath, sheetName, testName);
 		list = new ArrayList<String>();
 		object = new ArrayList<String>();
@@ -81,8 +78,6 @@ public class FrameworkUtils {
 			list.add(ExcelUtils.getCellData(filePath, sheetName, rowNum, cell));
 			object.add(ExcelUtils.getCellData(filePath, sheetName, 0, cell));
 		}
-//		System.out.println(list);
-//		System.out.println(object);
 		instanceMap = new HashMap<String, Object>();
 		for (int i = 0; i < list.size(); i++) {
 			instanceMap.put(list.get(i), ObjectUtils.getClassObject(object.get(i)));
@@ -90,7 +85,7 @@ public class FrameworkUtils {
 	}
 
 	public static void performMethod() throws Exception {
-		getKeywords();
+//		getKeywords();
 		for (String method : list) {
 			if (!method.isEmpty()) {
 				Object instance = instanceMap.get(method);
@@ -109,10 +104,10 @@ public class FrameworkUtils {
 		}
 	}
 
-	public static void getFiles(String fileName) throws Exception {
-		String filePath=filesMap.get("filePath");
-		String sheetName=filesMap.get("sheetName");
-		int rowNum = getRowNumber(filePath, sheetName, testName);
+	public static Map<String,String> getFiles(String fileName) throws Exception {
+		filePath=PropertiesUtils.getKeyValue("filePath");
+		sheetName=PropertiesUtils.getKeyValue("sheetName");
+		int rowNum = getRowNumber(filePath, sheetName, fileName);
 		filesMap=new HashMap<String, String>();
 		int cells=ExcelUtils.getCellCount(filePath, sheetName, 0);
 		for(int cell=0;cell<cells;cell++)
@@ -121,7 +116,6 @@ public class FrameworkUtils {
 			String value=ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
 			filesMap.put(key, value);
 		}
-		System.out.println(filesMap);
+		return filesMap;
 	}
-
 }

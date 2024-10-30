@@ -1,6 +1,5 @@
 package utils;
 
-import java.awt.Window;
 import java.util.Set;
 
 import org.openqa.selenium.WindowType;

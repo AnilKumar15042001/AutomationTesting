@@ -14,20 +14,20 @@ import utils.PropertiesUtils;
 
 public class BaseClass {
 
-	LoginPage loginPage;
+//	LoginPage loginPage;
 	@BeforeMethod
 	public void getCurrentMethodAndClass(ITestResult result) throws Exception {
 		testName=result.getMethod().getMethodName();
 		System.out.println(testName);
 		className=result.getMethod().getTestClass().getRealClass().getSimpleName();
+//		System.out.println(className);
 		packageName=result.getTestClass().getName();
+//		System.out.println(packageName);
 	}
 	
 	@BeforeMethod
 	public void getTestData() throws Exception {
-//		FrameworkUtils.loadFile();
-		PropertiesUtils.setKeyAndValue();
-		FrameworkUtils.loadTestData();
+//		PropertiesUtils.setKeyAndValue();
 	}
 	
 }

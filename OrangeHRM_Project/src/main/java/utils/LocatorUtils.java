@@ -9,8 +9,9 @@ import java.util.HashMap;
 
 public class LocatorUtils {
 
-	public static By getLocator(String locatorType,String locatorName) throws Exception {
-		loadLocators(locatorName);
+	
+	public static By getLocator(String fileName,String locatorType,String locatorName) throws Exception {
+		loadLocators(fileName,locatorName);
 		switch (locatorType.toLowerCase()) {
 		case "id":
 			return By.id(locatorsMap.get(locatorType));
@@ -34,9 +35,10 @@ public class LocatorUtils {
 		}
 	}
 
-	public static void loadLocators(String locatorName) throws Exception {
-		String filePath=filesMap.get("locatorsFile");
-		String sheetName=filesMap.get("locators");
+	public static void loadLocators(String fileName,String locatorName) throws Exception {
+		FrameworkUtils.getFiles(fileName);
+		String filePath=filesMap.get("FilePath");
+		String sheetName=filesMap.get("SheetName");
 		int rowNum = FrameworkUtils.getRowNumber(filePath, sheetName, locatorName);
 		locatorsMap = new HashMap<String, String>();
 		int cells = ExcelUtils.getCellCount(filePath, sheetName, 0);
@@ -45,6 +47,5 @@ public class LocatorUtils {
 			String value = ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
 			locatorsMap.put(key, value);
 		}
-//		System.out.println(locatorsMap);
 	}
 }
