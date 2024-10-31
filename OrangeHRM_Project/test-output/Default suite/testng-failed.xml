@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testSuite.LoginPageTests">
+      <class name="testSuite.AddEmployeePageTests">
         <methods>
-          <include name="testCase02"/>
           <include name="getTestData"/>
           <include name="loadData"/>
           <include name="getCurrentMethodAndClass"/>
+          <include name="testCase01"/>
         </methods>
-      </class> <!-- testSuite.LoginPageTests -->
+      </class> <!-- testSuite.AddEmployeePageTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

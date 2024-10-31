@@ -33,8 +33,9 @@ public class LoginPage extends LoginPageObj {
 		ElementUtils.performClick(login_btn);
 	}
 
-	public void verifyLoginPage() {
+	public boolean verifyLoginPage() {
 		Assert.assertTrue(ElementUtils.elementVisibility(heading), "Fail:User not in login page!...");
+		return true;
 	}
 
 	public void verifyErrorMessage() {
@@ -42,9 +43,15 @@ public class LoginPage extends LoginPageObj {
 	}
 
 	public void login() throws Exception {
-		setUsername_TextField(dataDrivenMap.get("Username"));
-		setPassword_TextField(dataDrivenMap.get("Password"));
-		setLogin_btn();
+		if(verifyLoginPage())
+		{
+			setUsername_TextField(dataDrivenMap.get("Username"));
+			setPassword_TextField(dataDrivenMap.get("Password"));
+			setLogin_btn();
+		}
+	}
+	
+	public void validate() throws Exception {
 		try {
 			if (dataDrivenMap.get("Expected").equals(ElementUtils.elementText(txt_InvalidCredentials))) {
 				

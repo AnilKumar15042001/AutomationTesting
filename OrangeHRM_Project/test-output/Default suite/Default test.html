@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>6/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Oct 30 23:31:32 IST 2024</td>
+<td>Started on:</td><td>Thu Oct 31 15:08:07 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>358 seconds (358805 ms)</td>
+<tr><td>Total time:</td><td>19 seconds (19028 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,14 +75,14 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testSuite.LoginPageTests.testCase02()'><b>testCase02</b><br>Test class: testSuite.LoginPageTests</td>
+<td title='testSuite.AddEmployeePageTests.testCase01()'><b>testCase01</b><br>Test class: testSuite.AddEmployeePageTests</td>
 <td><div><pre>java.lang.reflect.InvocationTargetException
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at utils.FrameworkUtils.performMethod(FrameworkUtils.java:98)
-	at testSuite.LoginPageTests.testCase02(LoginPageTests.java:24)
+	at utils.FrameworkUtils.performMethod(FrameworkUtils.java:97)
+	at testSuite.AddEmployeePageTests.testCase01(AddEmployeePageTests.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -111,19 +111,22 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.AssertionError: null
+Caused by: java.lang.AssertionError: Element is not displayed and not enabled expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:99)
-	at org.testng.Assert.fail(Assert.java:106)
-	at pages.LoginPage.login(LoginPage.java:60)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertTrue(Assert.java:45)
+	at utils.ElementUtils.textField(ElementUtils.java:85)
+	at pages.AddEmployeePage.uploadPhoto(AddEmployeePage.java:30)
+	at pages.AddEmployeePage.performSave(AddEmployeePage.java:57)
 	... 34 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace1200812313", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1200812313'><pre>java.lang.reflect.InvocationTargetException
+</pre></div><a href='#' onClick='toggleBox("stack-trace44627686", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace44627686'><pre>java.lang.reflect.InvocationTargetException
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at utils.FrameworkUtils.performMethod(FrameworkUtils.java:98)
-	at testSuite.LoginPageTests.testCase02(LoginPageTests.java:24)
+	at utils.FrameworkUtils.performMethod(FrameworkUtils.java:97)
+	at testSuite.AddEmployeePageTests.testCase01(AddEmployeePageTests.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -152,52 +155,17 @@ Caused by: java.lang.AssertionError: null
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.AssertionError: null
+Caused by: java.lang.AssertionError: Element is not displayed and not enabled expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:99)
-	at org.testng.Assert.fail(Assert.java:106)
-	at pages.LoginPage.login(LoginPage.java:60)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertTrue(Assert.java:45)
+	at utils.ElementUtils.textField(ElementUtils.java:85)
+	at pages.AddEmployeePage.uploadPhoto(AddEmployeePage.java:30)
+	at pages.AddEmployeePage.performSave(AddEmployeePage.java:57)
 	... 34 more
 </pre></div></td>
-<td>73</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='testSuite.LoginPageTests.testCase06()'><b>testCase06</b><br>Test class: testSuite.LoginPageTests</td>
-<td></td>
-<td>68</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
-<tr>
-<td title='testSuite.LoginPageTests.testCase01()'><b>testCase01</b><br>Test class: testSuite.LoginPageTests</td>
-<td></td>
-<td>68</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
-<tr>
-<td title='testSuite.LoginPageTests.testCase03()'><b>testCase03</b><br>Test class: testSuite.LoginPageTests</td>
-<td></td>
-<td>10</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
-<tr>
-<td title='testSuite.LoginPageTests.testCase05()'><b>testCase05</b><br>Test class: testSuite.LoginPageTests</td>
-<td></td>
-<td>59</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
-<tr>
-<td title='testSuite.LoginPageTests.testCase07()'><b>testCase07</b><br>Test class: testSuite.LoginPageTests</td>
-<td></td>
-<td>59</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
-<tr>
-<td title='testSuite.LoginPageTests.testCase04()'><b>testCase04</b><br>Test class: testSuite.LoginPageTests</td>
-<td></td>
-<td>5</td>
-<td>testSuite.LoginPageTests@8f4ea7c</td></tr>
+<td>13</td>
+<td>testSuite.AddEmployeePageTests@8f4ea7c</td></tr>
 </table><p>
 </body>
 </html>

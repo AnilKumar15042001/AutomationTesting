@@ -25,8 +25,8 @@ public class AddEmployeeObj {
 		save_btn=LocatorUtils.getLocator(fileName,"xpath", "save_btn");
 		cancel_btn=LocatorUtils.getLocator(fileName,"xpath", "cancel_btn");
 		pim_module=LocatorUtils.getLocator(fileName,"xpath", "pim_module");
-		addEmp_Submodule=LocatorUtils.getLocator(fileName,"xpath", "");
-		select_photo=LocatorUtils.getLocator(fileName,"xpath", "addEmp_Submodule");
+		addEmp_Submodule=LocatorUtils.getLocator(fileName,"linktext", "addEmp_Submodule");
+		select_photo=LocatorUtils.getLocator(fileName,"xpath", "select_photo");
 		addEmp_heading=LocatorUtils.getLocator(fileName,"xpath", "addEmp_heading");
 	}
 	

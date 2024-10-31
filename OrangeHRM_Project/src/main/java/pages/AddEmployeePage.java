@@ -52,17 +52,9 @@ public class AddEmployeePage extends AddEmployeeObj{
 		setFirstName(dataDrivenMap.get("FirstName"));
 		setMiddleName(dataDrivenMap.get("MiddleName"));
 		setLastName(dataDrivenMap.get("LastName"));
+		Thread.sleep(3000);
 		setEmpID(dataDrivenMap.get("EmployeeID"));
 		uploadPhoto(dataDrivenMap.get("Photo"));
-		setSave();
-		try{
-			if(dataDrivenMap.get("Expected").equals(ElementUtils.elementText(pim_module)))
-			{
-				
-			}
-			
-		}catch (Exception e) {
-			
-		}
+//		setSave();
 	}
 }

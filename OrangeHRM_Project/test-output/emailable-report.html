@@ -9,17 +9,17 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">358,805</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">19,028</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testSuite.LoginPageTests</td><td><a href="#m0">testCase02</a></td><td rowspan="1">1730311368231</td><td rowspan="1">73702</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="6">testSuite.LoginPageTests</td><td><a href="#m1">testCase01</a></td><td rowspan="1">1730311297686</td><td rowspan="1">68868</td></tr><tr class="passedeven"><td><a href="#m2">testCase03</a></td><td rowspan="1">1730311443201</td><td rowspan="1">10068</td></tr><tr class="passedeven"><td><a href="#m3">testCase04</a></td><td rowspan="1">1730311454582</td><td rowspan="1">5777</td></tr><tr class="passedeven"><td><a href="#m4">testCase05</a></td><td rowspan="1">1730311461693</td><td rowspan="1">59746</td></tr><tr class="passedeven"><td><a href="#m5">testCase06</a></td><td rowspan="1">1730311522444</td><td rowspan="1">68418</td></tr><tr class="passedeven"><td><a href="#m6">testCase07</a></td><td rowspan="1">1730311591977</td><td rowspan="1">59521</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testSuite.AddEmployeePageTests</td><td><a href="#m0">testCase01</a></td><td rowspan="1">1730367493060</td><td rowspan="1">13209</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">testSuite.LoginPageTests#testCase02</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.reflect.InvocationTargetException
+<h2>Default test</h2><h3 id="m0">testSuite.AddEmployeePageTests#testCase01</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.reflect.InvocationTargetException
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at utils.FrameworkUtils.performMethod(FrameworkUtils.java:98)
-	at testSuite.LoginPageTests.testCase02(LoginPageTests.java:24)
+	at utils.FrameworkUtils.performMethod(FrameworkUtils.java:97)
+	at testSuite.AddEmployeePageTests.testCase01(AddEmployeePageTests.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -48,17 +48,14 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.AssertionError: null
+Caused by: java.lang.AssertionError: Element is not displayed and not enabled expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:99)
-	at org.testng.Assert.fail(Assert.java:106)
-	at pages.LoginPage.login(LoginPage.java:60)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertTrue(Assert.java:45)
+	at utils.ElementUtils.textField(ElementUtils.java:85)
+	at pages.AddEmployeePage.uploadPhoto(AddEmployeePage.java:30)
+	at pages.AddEmployeePage.performSave(AddEmployeePage.java:57)
 	... 34 more
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">testSuite.LoginPageTests#testCase01</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">testSuite.LoginPageTests#testCase03</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">testSuite.LoginPageTests#testCase04</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">testSuite.LoginPageTests#testCase05</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">testSuite.LoginPageTests#testCase06</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">testSuite.LoginPageTests#testCase07</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

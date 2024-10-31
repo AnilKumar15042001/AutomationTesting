@@ -14,11 +14,11 @@ public class LoginPageObj {
 	public By txt_Required;
 
 	public LoginPageObj(String fileName) throws Exception {
-		username_TextField = LocatorUtils.getLocator(fileName,"name", "un");
-		password_TextField = LocatorUtils.getLocator(fileName,"name", "pwd");
-		login_btn = LocatorUtils.getLocator(fileName,"xpath", "login");
-		heading = LocatorUtils.getLocator(fileName,"xpath", "heading");
-		txt_InvalidCredentials = LocatorUtils.getLocator(fileName,"xpath", "invalid");
-		txt_Required = LocatorUtils.getLocator(fileName,"xpath", "required");
+		username_TextField = LocatorUtils.getLocator(fileName,"name", "txt_username");
+		password_TextField = LocatorUtils.getLocator(fileName,"name", "txt_password");
+		login_btn = LocatorUtils.getLocator(fileName,"xpath", "login_btn");
+		heading = LocatorUtils.getLocator(fileName,"xpath", "page_heading");
+		txt_InvalidCredentials = LocatorUtils.getLocator(fileName,"xpath", "invalid_txt");
+		txt_Required = LocatorUtils.getLocator(fileName,"xpath", "required_msg");
 	}
 }

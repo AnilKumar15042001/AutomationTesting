@@ -85,7 +85,6 @@ public class FrameworkUtils {
 	}
 
 	public static void performMethod() throws Exception {
-//		getKeywords();
 		for (String method : list) {
 			if (!method.isEmpty()) {
 				Object instance = instanceMap.get(method);

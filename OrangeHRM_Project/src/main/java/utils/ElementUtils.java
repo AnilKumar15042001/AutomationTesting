@@ -1,15 +1,15 @@
 package utils;
 
-import static components.AppCommon.driver;
-import static components.AppCommon.element;
-import static components.AppCommon.select;
+import static components.AppCommon.*;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -52,10 +52,38 @@ public class ElementUtils {
 		}
 		return element;
 	}
+	
+	public static void clearText(By by,int ch) throws Exception {
+		WebElement element=locateElement(by);
+		switch (ch) {
+		case 1:
+			element.sendKeys(Keys.CONTROL+"a",Keys.BACK_SPACE);
+			break;
+		case 2:
+			element.sendKeys(Keys.CONTROL+"a","");
+			break;
+		case 3:
+			int len=element.getAttribute("value").length();
+			for(int i=0;i<len;i++)
+			{
+				element.sendKeys(Keys.BACK_SPACE);
+			}
+			break;
+		case 4:
+			actions=new Actions(driver);
+			actions.doubleClick(element).perform();
+			element.sendKeys(Keys.BACK_SPACE);
+			break;
+
+		default:System.out.println("Invalid choice!..."+ch);
+			break;
+		}
+	}
 
 	// textbox
 	public static void textField(By by, String value) throws Exception {
 		Assert.assertTrue(locateElement(by).isDisplayed() && locateElement(by).isEnabled(),"Element is not displayed and not enabled");
+		clearText(by, 1);
 		locateElement(by).sendKeys(value);
 	}
 
