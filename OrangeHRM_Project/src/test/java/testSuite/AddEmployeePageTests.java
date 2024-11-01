@@ -20,6 +20,7 @@ public class AddEmployeePageTests extends BaseClass{
 	public void testCase01() throws Exception {
 		FrameworkUtils.performMethod();
 	}
+	
 	@Test
 	public void testCase02() throws Exception {
 		FrameworkUtils.performMethod();

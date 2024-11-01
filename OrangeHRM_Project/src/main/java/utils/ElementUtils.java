@@ -2,9 +2,15 @@ package utils;
 
 import static components.AppCommon.*;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -82,8 +88,31 @@ public class ElementUtils {
 
 	// textbox
 	public static void textField(By by, String value) throws Exception {
-		Assert.assertTrue(locateElement(by).isDisplayed() && locateElement(by).isEnabled(),"Element is not displayed and not enabled");
+		Assert.assertTrue(locateElement(by).isDisplayed() && locateElement(by).isEnabled(),"Text field is not displayed and not enabled");
 		clearText(by, 1);
+		locateElement(by).sendKeys(value);
+	}
+	
+	//file size
+	public static double findFileSize(String filePath)
+	{
+		File f=new File(filePath);
+		long bytes=f.length();
+		return ((double)bytes/1024)/1024;
+	}
+	
+	public static Dimension findFileDimension(String filePath) throws IOException
+	{
+		File file=new File(filePath);
+		BufferedImage img=ImageIO.read(file);
+		int width=img.getWidth();
+		int height=img.getHeight();
+		return new Dimension(width,height);
+	}
+	
+	//upload field
+	public static void uploadField(By by, String value) throws Exception {
+		Assert.assertTrue(locateElement(by).isDisplayed() || locateElement(by).isEnabled(),"Upload field is not displayed and not enabled");
 		locateElement(by).sendKeys(value);
 	}
 

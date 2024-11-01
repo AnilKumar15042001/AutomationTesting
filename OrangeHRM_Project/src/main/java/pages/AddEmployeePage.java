@@ -27,7 +27,8 @@ public class AddEmployeePage extends AddEmployeeObj{
 	}
 	
 	public void uploadPhoto(String photoPath) throws Exception {
-		ElementUtils.textField(select_photo, photoPath);
+		System.out.println(ElementUtils.findFileSize(photoPath));
+		ElementUtils.uploadField(select_photo, photoPath);
 	}
 	
 	public void setSave() throws Exception {
@@ -52,9 +53,10 @@ public class AddEmployeePage extends AddEmployeeObj{
 		setFirstName(dataDrivenMap.get("FirstName"));
 		setMiddleName(dataDrivenMap.get("MiddleName"));
 		setLastName(dataDrivenMap.get("LastName"));
-		Thread.sleep(3000);
 		setEmpID(dataDrivenMap.get("EmployeeID"));
 		uploadPhoto(dataDrivenMap.get("Photo"));
-//		setSave();
+		setSave();
 	}
+	
+	
 }
