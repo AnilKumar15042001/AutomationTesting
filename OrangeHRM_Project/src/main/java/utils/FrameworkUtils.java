@@ -29,7 +29,7 @@ public class FrameworkUtils {
 		int rowNum = getRowNumber(filePath, sheetName, testName);
 //		dataDrivenMap = new HashMap<String, String>();
 		int cells = ExcelUtils.getCellCount(filePath, sheetName, 0);
-		for (int cell = 0; cell < cells; cell++) {
+		for (int cell = 1; cell < cells; cell++) {
 			String key = ExcelUtils.getCellData(filePath, sheetName, 0, cell);
 			String value = ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
 			dataDrivenMap.put(key, value);
@@ -45,7 +45,7 @@ public class FrameworkUtils {
 		int cellNum = 0;
 		dataDrivenMap = new HashMap<String, String>();
 		int cells = ExcelUtils.getCellCount(filePath, sheetName, 0);
-		for (int cell = 0; cell < cells; cell++) {
+		for (int cell = 1; cell < cells; cell++) {
 			String key = ExcelUtils.getCellData(filePath, sheetName, 0, cell);
 			String value = ExcelUtils.getCellData(filePath, sheetName, rowNum, cell);
 			dataDrivenMap.put(key, value);
@@ -53,7 +53,7 @@ public class FrameworkUtils {
 				cellNum = cell;
 			}
 		}
-		for (int cell = 0; cell < cells; cell++) {
+		for (int cell = 1; cell < cells; cell++) {
 			if (cell == cellNum) {
 				ExcelUtils.setCellData(filePath, sheetName, rowNum, cellNum, cellvalue);
 				dataDrivenMap.put(cellHeader, cellvalue);

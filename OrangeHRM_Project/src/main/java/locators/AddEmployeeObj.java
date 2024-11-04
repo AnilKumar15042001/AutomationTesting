@@ -12,7 +12,6 @@ public class AddEmployeeObj {
 	public By txt_empid;
 	public By save_btn;
 	public By cancel_btn;
-	public By pim_module;
 	public By addEmp_Submodule;
 	public By select_photo;
 	public By addEmp_heading;
@@ -24,7 +23,6 @@ public class AddEmployeeObj {
 		txt_empid=LocatorUtils.getLocator(fileName,"xpath", "txt_empid");
 		save_btn=LocatorUtils.getLocator(fileName,"xpath", "save_btn");
 		cancel_btn=LocatorUtils.getLocator(fileName,"xpath", "cancel_btn");
-		pim_module=LocatorUtils.getLocator(fileName,"xpath", "pim_module");
 		addEmp_Submodule=LocatorUtils.getLocator(fileName,"linktext", "addEmp_Submodule");
 		select_photo=LocatorUtils.getLocator(fileName,"xpath", "select_photo");
 		addEmp_heading=LocatorUtils.getLocator(fileName,"xpath", "addEmp_heading");

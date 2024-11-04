@@ -39,16 +39,11 @@ public class AddEmployeePage extends AddEmployeeObj{
 		ElementUtils.performButtonClick(cancel_btn);
 	}
 	
-	public void clickPIM() throws Exception {
-		ElementUtils.performButtonClick(pim_module);
-	}
-	
 	public void clickAddEmp() throws Exception {
 		ElementUtils.performButtonClick(addEmp_Submodule);
 	}
 	
 	public void performSave() throws Exception {
-		clickPIM();
 		clickAddEmp();
 		setFirstName(dataDrivenMap.get("FirstName"));
 		setMiddleName(dataDrivenMap.get("MiddleName"));
@@ -57,6 +52,24 @@ public class AddEmployeePage extends AddEmployeeObj{
 		uploadPhoto(dataDrivenMap.get("Photo"));
 		setSave();
 	}
+	public void performCancel() throws Exception {
+		clickAddEmp();
+		setFirstName(dataDrivenMap.get("FirstName"));
+		setMiddleName(dataDrivenMap.get("MiddleName"));
+		setLastName(dataDrivenMap.get("LastName"));
+		setEmpID(dataDrivenMap.get("EmployeeID"));
+		uploadPhoto(dataDrivenMap.get("Photo"));
+		setCancel();
+	}
 	
-	
+	public void valiadteAddEmployee() {
+		try
+		{
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
 }

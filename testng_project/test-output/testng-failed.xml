@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite thread-count="2" parallel="methods" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="methods" name="Test(failed)">
     <classes>
-      <class name="utils.LocatorUtils">
+      <class name="testSuite.LoginPageTests">
         <methods>
-          <include name="name"/>
+          <include name="close"/>
+          <include name="testCase03"/>
+          <include name="testCase05"/>
+          <include name="testCase04"/>
+          <include name="getTestData"/>
+          <include name="testCase06"/>
+          <include name="getCurrentMethodAndClass"/>
         </methods>
-      </class> <!-- utils.LocatorUtils -->
+      </class> <!-- testSuite.LoginPageTests -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -17,6 +17,7 @@ public class BaseClass {
 	@BeforeMethod
 	public void getCurrentMethodAndClass(ITestResult result) throws Exception {
 		testName=result.getMethod().getMethodName();
+		System.out.println(testName);
 		className=result.getMethod().getTestClass().getRealClass().getSimpleName();
 		packageName=result.getTestClass().getName();
 	}
